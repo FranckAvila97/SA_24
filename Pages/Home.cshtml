@@ -1,0 +1,86 @@
+﻿@page
+@model SA_W4.Pages.Home
+@{
+    ViewData["Title"] = "Home";
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home - Mi Aplicación</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        var _URL_ROOT = '@Url.Content("~/")';
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Mi Aplicación</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                    </li>
+                    <!-- Agrega más elementos de menú según sea necesario -->
+                </ul>
+                <button id="logoutBtn" class="btn btn-outline-danger">Cerrar Sesión</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1>Bienvenido a tu Dashboard</h1>
+        <p>Esta es tu página de inicio. Aquí puedes agregar contenido relevante para el usuario.</p>
+
+        <!-- Ejemplo de contenido del dashboard -->
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Estadísticas</h5>
+                        <p class="card-text">Aquí puedes mostrar algunas estadísticas importantes.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Tareas Pendientes</h5>
+                        <p class="card-text">Lista de tareas pendientes o actividades recientes.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Mensajes</h5>
+                        <p class="card-text">Últimos mensajes o notificaciones para el usuario.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            let user = localStorage.getItem("user");
+            if (!user) {
+                window.location.href = _URL_ROOT;
+            }
+
+            $("#logoutBtn").click(function () {
+                localStorage.removeItem("user");
+                window.location.href = _URL_ROOT;
+            });
+        });
+
+    </script>
+</body>
+</html>
